@@ -9,7 +9,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Security;
 using System.Security.Principal;
-
+using System.Security.Cryptography;
+using System.Text;
 namespace INTROSE_JGC
 {
     public partial class Login : System.Web.UI.Page
@@ -31,19 +32,33 @@ namespace INTROSE_JGC
             string roles = string.Empty;
             
             string constr = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
+
+            SqlCommand cmd1 = new SqlCommand("SELECT FIRST_TIME_CHANGED_PASS FROM CMT_EMPLOYEES WHERE USERNAME = @username");
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand("Validate_User"))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Username", txtUsername.Value);
-                    cmd.Parameters.AddWithValue("@Password", txtPassword.Value);
-                    cmd.Connection = con;
                     con.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-                    userId = Convert.ToInt32(reader["EMPLOYEE_ID"]);
-                    roles = reader["ROLES"].ToString();
+                    cmd1.Parameters.AddWithValue("@username", txtUsername.Value);
+                    cmd1.Connection = con;
+                    SqlDataReader reader1 = cmd1.ExecuteReader();
+                    reader1.Read();
+                    int intFirstChange = int.Parse(reader1.GetValue(0).ToString());
+                    reader1.Close();
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Username", txtUsername.Value);
+                        if (intFirstChange == 1)
+                            cmd.Parameters.AddWithValue("@Password", txtPassword.Value);
+                        else
+                            cmd.Parameters.AddWithValue("@Password", encryption(txtPassword.Value));
+                        cmd.Connection = con;
+                        
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        reader.Read();
+                        userId = Convert.ToInt32(reader["EMPLOYEE_ID"]);
+                        roles = reader["ROLES"].ToString();
+                        reader.Close();
                     con.Close();
                 }
                 if (userId == -1)
@@ -66,6 +81,21 @@ namespace INTROSE_JGC
 
                 }
             }
+        }
+        public string encryption(String password)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] encrypt;
+            UTF8Encoding encode = new UTF8Encoding();
+            //encrypt the given password string into Encrypted data  
+            encrypt = md5.ComputeHash(encode.GetBytes(password));
+            StringBuilder encryptdata = new StringBuilder();
+            //Create a new string by using the encrypted data  
+            for (int i = 0; i < encrypt.Length; i++)
+            {
+                encryptdata.Append(encrypt[i].ToString());
+            }
+            return encryptdata.ToString();
         }
 
         /*protected void ValidateUser(object sender, EventArgs e)
