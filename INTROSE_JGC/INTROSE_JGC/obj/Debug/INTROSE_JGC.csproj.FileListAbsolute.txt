@@ -49,3 +49,5 @@ c:\users\clrkco\documents\visual studio 2013\Projects\INTROSE_JGC\INTROSE_JGC\bi
 c:\users\clrkco\documents\visual studio 2013\Projects\INTROSE_JGC\INTROSE_JGC\obj\Debug\INTROSE_JGC.csprojResolveAssemblyReference.cache
 c:\users\clrkco\documents\visual studio 2013\Projects\INTROSE_JGC\INTROSE_JGC\obj\Debug\INTROSE_JGC.dll
 c:\users\clrkco\documents\visual studio 2013\Projects\INTROSE_JGC\INTROSE_JGC\obj\Debug\INTROSE_JGC.pdb
+C:\Users\clrkco\Documents\Visual Studio 2013\Projects\INTROSE_JGC\INTROSE_JGC\bin\Oracle.ManagedDataAccess.dll
+C:\Users\clrkco\Documents\Visual Studio 2013\Projects\INTROSE_JGC\INTROSE_JGC\bin\Oracle.ManagedDataAccess.EntityFramework.dll

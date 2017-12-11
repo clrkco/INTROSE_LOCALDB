@@ -194,49 +194,26 @@
         <div class="imgcontainer">
             <a href="/Default.aspx"><img src="jgc.png" alt="Avatar" class="avatar"> </a>
         </div>
-        <div class = "home">
-            <a href="/Default.aspx" class = "menu">Home</a>
-        </div>
-        <div class = "home dropdown">
-                <div class = "dropdown">Projects</div>
-                <div class="dropdown-content">
-                    <a href="/Module1.aspx">Module 1</a>
-                    <a href="/Module2.aspx">Module 2</a>
-                    <a href="/Module6.aspx">Module 6</a>
-                </div>
-            </div>
-            <div class = "home dropdown">
-                <div class = "dropdown">Admin/IT</div>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
-        <div class = "home">
-            <a href="#" class = "menu">About</a>
-        </div>
-        <div class = "home">
-            <a href="#" class = "menu">Contact</a>
-        </div>
-        <div class = "home">
-            <a href="/Login.aspx" class = "menu">Login</a>
-        </div>
     </header>
     <form id="form1" runat="server">
     <div class = "login">
   <div class="form">
-    <input type="text" placeholder="Username" name="uname" required>
+    <input type="text" placeholder="Username" name="uname" id ="txtUsername" runat="server" required>
 
-    <input type="password" placeholder="Password" name="psw" required>
-
-    <button type="submit" class="loginbutton">Login</button>
+    <input type="password" placeholder="Password" name="psw" id ="txtPassword" runat="server" required>
+      
+    <asp:button type="submit" Text ="Login" class="loginbutton" runat="server" onclick="Button1_Click" BackColor="#4CAF50"/>
 
     </div>
     <div>
-        <label><input type="checkbox"> Remember me </label>
+        <label><input type="checkbox"> Remember me 
+        </label>
 
         <div class="modifypass">
+        <label>
+            
+            </label>
+
         <div class ="pass"> <a href="/ChangePassword.aspx">Change password</a></div>
     </div>
     </div>

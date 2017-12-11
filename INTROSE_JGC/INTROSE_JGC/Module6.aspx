@@ -277,7 +277,19 @@
         padding: 10px;
         margin: 10px;
 
-        }
+    }
+    .home3{
+        display: inline-block;
+        color: white;
+        position: relative;
+        font-size: 15px;
+        bottom: 43px;
+        margin-left: 12px;
+        margin-right: 10px;
+        left: 946px;
+        font-family: sans-serif;
+
+    }
 </style>
 
 <head runat="server">
@@ -302,23 +314,17 @@
                     <a href="/Module6.aspx">Module 6</a>
                 </div>
             </div>
-            <div class = "home dropdown">
-                <div class = "dropdown">Admin/IT</div>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
-        <div class = "home">
-            <a href="#" class = "menu">About</a>
+            <div class = "home">
+                      <a href="/Module7.aspx" class = "menu">Admin/IT</a>             
+             </div>
+       
+        <div class = "home3">
+            <a href="/UserProfile.aspx" class = "menu">User Profile</a>
         </div>
-        <div class = "home">
-            <a href="#" class = "menu">Contact</a>
-        </div>
-        <div class = "home">
+        <%--<div class = "home">
             <a href="/Login.aspx" class = "menu">Login</a>
-        </div>
+        </div>--%> 
+        <%-- PUT LOGOUT TO LOGIN IN CONJUNCTION WITH FORMS AUTHENTICATION --%>
     </header>
     <form class = "info">
         <div class="row">

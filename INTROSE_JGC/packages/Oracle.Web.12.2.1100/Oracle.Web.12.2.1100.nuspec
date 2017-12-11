@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Oracle.Web</id>
+    <version>12.2.1100</version>
+    <title>Official Oracle Providers for ASP.NET, Managed Driver</title>
+    <authors>Oracle</authors>
+    <owners>Oracle</owners>
+    <licenseUrl>http://www.oracle.com/technetwork/licenses/distribution-license-152002.html</licenseUrl>
+    <iconUrl>http://www.oracle.com/technetwork/topics/dotnet/products/oracle12c-2402760.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This NuGet package is for Oracle Providers for ASP.NET that use Oracle Data Provider for .NET, Managed Driver. It will add the Oracle ASP.NET providers assembly and auto-configure for its use so that ASP.NET application state can be stored within an Oracle Database. Note that this package does not include ODP.NET, Managed Driver which is available as a separate NuGet package. Note: To complete Oracle Providers for ASP.NET setup after installation, run the SQL scripts located in the sql directory of this package on the target database server the providers will use.</description>
+    <summary>Oracle Providers for ASP.NET that uses ODP.NET, Managed Driver for Oracle Database access.</summary>
+    <copyright>2017</copyright>
+    <tags>ASP.NET Oracle DB database</tags>
+    <dependencies>
+      <dependency id="Oracle.ManagedDataAccess" version="[12.2.1100, 12.3.0)" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="INTROSE_JGC.Default" %>
-
 <!DOCTYPE html>
 <html>
 <style>
@@ -180,7 +179,19 @@
 	caption{
         font-family: sans-serif;
 		align: top;
-		}
+	}
+    .home3{
+        display: inline-block;
+        color: white;
+        position: relative;
+        font-size: 15px;
+        bottom: 43px;
+        margin-left: 12px;
+        margin-right: 10px;
+        left: 946px;
+        font-family: sans-serif;
+
+    }
 		
 </style>
 
@@ -201,28 +212,27 @@
         <div class = "home dropdown">
                 <div class = "dropdown">Projects</div>
                 <div class="dropdown-content">
-                    <a href="/Module1.aspx">Module 1</a>
-                    <a href="/Module2.aspx">Module 2</a>
-                    <a href="/Module6.aspx">Module 6</a>
+                    <a href="/Module1.aspx">Project Infrastructure Cost Estimate </a>
+                    <a href="/Module2.aspx">Project Engineering and Management Software Cost Estimate </a>
+                    <a href="/Module6.aspx">Engineering Software License Allocation Monitoring System </a>
                 </div>
             </div>
-            <div class = "home dropdown">
-                <div class = "dropdown">Admin/IT</div>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
-        <div class = "home">
-            <a href="#" class = "menu">About</a>
+            <div class = "home">
+                <asp:LoginView ID="DefaultLoginView" runat="server">
+                    <AnonymousTemplate>
+                        <asp:HyperLink runat="server" NavigateUrl="~/Module7.aspx" Text="Admin" ForeColor="White"></asp:HyperLink>
+                    </AnonymousTemplate>
+                </asp:LoginView>
+                              
+             </div>
+        
+        <div class = "home3">
+            <a href="/UserProfile.aspx" class = "menu">User Profile</a>
         </div>
-        <div class = "home">
-            <a href="#" class = "menu">Contact</a>
-        </div>
-        <div class = "home">
+        <%--<div class = "home">
             <a href="/Login.aspx" class = "menu">Login</a>
-        </div>
+        </div>--%> 
+        <%-- PUT LOGOUT IN CONJUNCTION WITH FORMS AUTHENTICATION --%>
     </header>
     <form id="form1" runat="server" style = "white-space:nowrap">
     <table id="t01">
