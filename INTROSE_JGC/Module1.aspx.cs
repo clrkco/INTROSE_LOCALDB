@@ -170,7 +170,7 @@ namespace INTROSE_JGC
             lblStatus.Text = "Successfully submitted!";
             SqlCommand cmd2 = new SqlCommand("DELETE TEMP_TABLE1");
             cmd2.Connection = con;
-            cmd.ExecuteNonQuery();
+            cmd2.ExecuteNonQuery();
             con.Close();
             Response.Redirect("Module1.aspx");
             

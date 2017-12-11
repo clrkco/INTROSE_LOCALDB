@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="INTROSE_JGC.Default" %>
+
+
 <!DOCTYPE html>
-<html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <style>
     
     .login{
@@ -139,47 +142,136 @@
     }
 
     form{
-		text-align: center;
-		margin: 0 auto 20px;
-        padding 45px;
-		}
-        table #t01{
-            float:left;
-            width:50%;
-		}
+        text-align: left;
+        margin: 0 auto 20px;
+        padding: 45px;
+    }
 
-        table #t02{
-            float:left;
-            width:50%;
-        }
+
+
     table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
-		margin: 0 0 15px;
-        padding: 15px;
-		display: inline-block;
-		postion:relative;
-		width:500px;
-		height:auto;
-        overflow:scroll;
+        margin: 0 0 15px;
+        padding: 10px;
+        display: inline-block;
+        position: relative;
+        width:400px;
+        float: left;
+        overflow-y: scroll;
+        height: 300px;
+        top: 25px;
+        left: 3px;
     }
-
 
 
     td, th {
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 8px;
+        width: 200px;
     }
 
     tr:nth-child(even) {
         background-color: #dddddd;
     }
 
-	caption{
+    caption{
         font-family: sans-serif;
-		align: top;
-	}
+    }
+    
+    .textboxid{
+        height:100px;
+        font-size:12pt;
+        
+    }
+
+    textarea {
+        width: 300px;
+        padding: 10px;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: none;
+        display: inline-block;
+        vertical-align: text-top;
+    }
+    
+    input[type=text], input[type=date],input[type=number], select {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    display: inline-block;
+    vertical-align: text-top;
+    }
+.info {
+    border-radius: 5px;
+    padding: 20px;
+    float: left;
+    width: 1023px;
+    font-family: sans-serif;
+        height: 356px;
+    }
+.col-25 {
+    width: 150px;
+    display: inline-block;
+    padding: 10px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  width: 200px;
+  margin-top: 6px;
+        padding: 15px;
+    display: inline-block;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    
+     form button{
+        font-family: sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #4CAF50;
+        width: 30%;
+        border: 0;
+        margin-top: 10px;
+        margin-right:117px;
+        display: inline-block;
+        padding: 10px;
+        color: #FFFFFF;
+        font-size: 14px;
+        
+    }
+    
+     .submit {
+        font-family: sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #4CAF50;
+        width: 20%;
+        border: 0;
+        margin: 30px;
+        padding: 10px;
+        color: #FFFFFF;
+        font-size: 14px;
+        float: right;
+        
+    }
+    .tabletitle{
+        font-family:sans-serif;
+        padding: 10px;
+        margin: 10px;
+
+    }
     .home3{
         display: inline-block;
         color: white;
@@ -192,15 +284,10 @@
         font-family: sans-serif;
 
     }
-		
-    .auto-style1 {
-        height: 37px;
-    }
-		
 </style>
 
 <head runat="server">
-    <title>Homepage</title>
+    <title>Home</title>
     <script runat="server">
     
     </script>
@@ -208,7 +295,7 @@
 <body>
     <header>
         <div class="imgcontainer">
-            <a href="/Default.aspx"><img src="jgc.png" alt="Avatar" class="avatar"> </a>
+            <a href="/Default.aspx"><img src="jgc.png" alt="Avatar" class="avatar"/> </a>
         </div>
         <div class = "home">
             <a href="/Default.aspx" class = "menu">Home</a>
@@ -221,50 +308,38 @@
                     <a href="/Module6.aspx">Engineering Software License Allocation Monitoring System </a>
                 </div>
             </div>
-        <div class = "home">
-               <a href="/Admin/Module7.aspx" ><font color="White">Admin</font</a>          
-         </div>
-        
+        <div class="home">
+            <a href ="Admin/Module7.aspx"><font color="White">Admin</font></a>
+        </div>
         <div class = "home3">
             <a href="/UserProfile.aspx" class = "menu">User Profile</a>
         </div>
+       
     </header>
-    <form id="form1" runat="server" style = "white-space:nowrap">
-    <div class ="home3">
-    </div>
-    <table id="t01">
-	    <caption >Projects</caption>
-	  <tr>
-        <th class="auto-style1">Name</th>
-        <th class="auto-style1">Department</th> 
-        <th class="auto-style1">Start Date</th>
-      </tr>
-      <tr>
-        <td>Project 1</td>
-        <td>IT</td> 
-        <td>28-01-2017</td>
-      </tr>
-    </table>
-    <table id="t02">
-	  <caption>Activity Log</caption>
-	  <tr>
-        <th>Name</th>
-        <th>Project</th> 
-        <th>Date</th>
-      </tr>
-      <tr>
-        <td>Eve</td>
-        <td>Project 1</td> 
-        <td>05-11-2017</td>
-      </tr>
-    </table>
+    <form class = "info" runat ="server">
     
+        <asp:GridView ID= "tblMATLIST" runat="server" AutoGenerateColumns="False">
+
+        </asp:GridView>
+        <asp:GridView ID="ActivityLog" runat="server" AutoGenerateColumns="False" DataKeyNames="LOG_ID"  OnSelectedIndexChanged="ActivityLog_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="LOG_ID" HeaderText="LOG_ID" ReadOnly="True" SortExpression="LOG_ID" />
+                <asp:BoundField DataField="EMPLOYEE_NAME" HeaderText="EMPLOYEE_NAME" SortExpression="EMPLOYEE_NAME" />
+                <asp:BoundField DataField="PROJECT_NAME" HeaderText="PROJECT_NAME" SortExpression="PROJECT_NAME" />
+                <asp:BoundField DataField="DATETIME" HeaderText="DATETIME" SortExpression="DATETIME" />
+            </Columns>
+
+        </asp:GridView>
+        <asp:SqlDataSource ID="ActivityLogData" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT * FROM [CMV_ActivityLog]"></asp:SqlDataSource>
+        <asp:Button runat="server" ID="btnRefresh" Text="Refresh" OnClick="btnRefresh_Click"    />
     </form>
+    
+       
+    
+       
     <footer>
         <div class ="foot"> &copy; JGC Philippines INC.</div>
     </footer>
-    </font>
-    <p>
-        &nbsp;</p>
 </body>
 </html>
+

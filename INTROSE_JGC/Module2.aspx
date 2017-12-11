@@ -362,13 +362,13 @@
         <input runat="server" type="number" id="txtNumofMons"/><br>
         </div>
         </div>
-
+        <%-- ADD others option --%>
            <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" ></asp:Button>
            <asp:Button runat="server" ID="btnAdd" Text="Add" OnClick="btnAdd_Click"></asp:Button>
     
     <div class = "tabletitle">Software List</div>
 
-    <asp:GridView ID="tblView" runat="server" AutoGenerateColumns="False" DataKeyNames="SOFTWARE" DataSourceID="SqlDataSource1">
+    <asp:GridView ID="tblView" runat="server" AutoGenerateColumns="False" DataKeyNames="SOFTWARE" DataSourceID="SqlDataSource2">
         <Columns>
             <asp:BoundField DataField="SOFTWARE" HeaderText="SOFTWARE" ReadOnly="True" SortExpression="SOFTWARE" />
             <asp:BoundField DataField="PROJECT" HeaderText="PROJECT" SortExpression="PROJECT" />
@@ -376,6 +376,7 @@
             <asp:BoundField DataField="NUMBEROFMONTHS" HeaderText="NUMBEROFMONTHS" SortExpression="NUMBEROFMONTHS" />
         </Columns>
     </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TEMPTABLE&quot;"></asp:SqlDataSource>--%>
        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"></asp:Button>

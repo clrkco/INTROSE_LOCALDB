@@ -172,6 +172,7 @@
     <Content Include="App_Data\LocalDB_log.ldf">
       <DependentUpon>LocalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Default.aspx" />
     <Content Include="INTROSE_JGC.sln" />
     <Content Include="Admin\Module7.aspx" />
     <Content Include="Login\jgc.png" />
@@ -183,7 +184,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="jgc.png" />
     <Content Include="Login\Login.aspx" />
@@ -271,6 +271,13 @@
     <Compile Include="Admin\Module7.aspx.designer.cs">
       <DependentUpon>Module7.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProjectDescription.aspx.cs">
       <DependentUpon>ProjectDescription.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -307,13 +314,6 @@
     </Compile>
     <Compile Include="Unused Forms\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

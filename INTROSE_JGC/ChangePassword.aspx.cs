@@ -28,10 +28,11 @@ namespace INTROSE_JGC
             //get if changed pass already
             string constr = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
-            SqlCommand cmd = new SqlCommand("SELECT FIRST_TIME_CHANGED_PASS FROM CMT_EMPLOYEES WHERE USERNAME=@username");
-            cmd.Parameters.AddWithValue("@username", User.Identity.Name);
-            cmd.Connection = con;
+            
             con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT FIRST_TIME_CHANGED_PASS FROM CMT_EMPLOYEES WHERE USERNAME=@username");
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@username", User.Identity.Name);
             SqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
             intFirstTime = int.Parse(dr.GetValue(0).ToString());

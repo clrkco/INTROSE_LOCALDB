@@ -43,8 +43,10 @@ namespace INTROSE_JGC
                     cmd1.Connection = con;
                     SqlDataReader reader1 = cmd1.ExecuteReader();
                     reader1.Read();
-                    int intFirstChange = int.Parse(reader1.GetValue(0).ToString());
-                    reader1.Close();
+                    try
+                    {
+                        int intFirstChange = int.Parse(reader1.GetValue(0).ToString());
+                        reader1.Close();
 
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@Username", txtUsername.Value);
@@ -53,13 +55,18 @@ namespace INTROSE_JGC
                         else
                             cmd.Parameters.AddWithValue("@Password", encryption(txtPassword.Value));
                         cmd.Connection = con;
-                        
+
                         SqlDataReader reader = cmd.ExecuteReader();
                         reader.Read();
                         userId = Convert.ToInt32(reader["EMPLOYEE_ID"]);
                         roles = reader["ROLES"].ToString();
                         reader.Close();
-                    con.Close();
+                        con.Close();
+                    }
+                    catch
+                    {
+                        userId = -1;
+                    }
                 }
                 if (userId == -1)
                 {

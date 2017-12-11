@@ -279,7 +279,7 @@
     </script>
 </head>
 <body>
-    <header>
+    <header runat="server">
         <div class="imgcontainer">
             <a href="/Default.aspx"><img src="jgc.png" alt="Avatar" class="avatar"> </a>
         </div>
@@ -299,7 +299,7 @@
             <a href="/UserProfile.aspx" class = "menu">User Profile</a>
            </div>
       <div class = "home2">
-            <a href="/Login.aspx" class = "menu" onclick="alert('You have successfully logged out')">Logout</a>
+            <asp:LoginStatus runat="server" />
         </div>
     </header>
     <form class="info" runat="server">

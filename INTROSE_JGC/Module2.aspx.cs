@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 namespace INTROSE_JGC
 {
     public partial class Module2 : System.Web.UI.Page
@@ -60,7 +62,18 @@ namespace INTROSE_JGC
             DateTime dtDate = new DateTime(intYear, intMonth, intDay, intHour, intMinute, intSecond);
 
             //insert intProjID (PROJECT_ID),strSoftware (SOFTWARE), intMonths(NUMBER_OF_MONTHS), dtDate(START_DATE)
-            //push to TEMPTABLE which is shown as view
+           /* SqlCommand cmd3 = new SqlCommand("INSERT INTO [TEMP_TABLE1] VALUES(@projID,@matID,@qty,@rmk,@price)");
+            cmd3.Parameters.AddWithValue("@projID", lstProject.SelectedValue);
+            cmd3.Parameters.AddWithValue("@matID", strMaterial);
+            cmd3.Parameters.AddWithValue("@price", fTotal);
+            cmd3.Parameters.AddWithValue("@rmk", strRemarks);
+            cmd3.Parameters.AddWithValue("@qty", intQty);
+            cmd3.Connection = con;
+            cmd3.ExecuteNonQuery();
+            lblStatus.Text = "Successfully added!";
+            con.Close();
+            Response.Redirect("Module2.aspx");
+            //push to TEMPTABLE which is shown as view*/
 
         }
 

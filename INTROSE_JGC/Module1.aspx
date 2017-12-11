@@ -321,10 +321,7 @@
         <div class = "home3">
             <a href="/UserProfile.aspx" class = "menu">User Profile</a>
         </div>
-       <%--<div class = "home">
-            <a href="/Login.aspx" class = "menu">Login</a>
-        </div>--%> 
-        <%-- PUT LOGOUT IN CONJUNCTION WITH FORMS AUTHENTICATION --%>
+       
     </header>
     <form class = "info" runat ="server">
         <div class="row">
