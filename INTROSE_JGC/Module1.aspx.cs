@@ -94,6 +94,7 @@ namespace INTROSE_JGC
                         lstMaterials.DataTextField = "NAME";
                         lstMaterials.DataValueField = "MATERIAL_ID";
                         lstMaterials.DataBind();
+                        
                     }
                     con.Close();
                 }
@@ -111,6 +112,8 @@ namespace INTROSE_JGC
             int intQty = int.Parse(txtQuantity.Text);
             string strMaterial = lstMaterials.SelectedValue;
             string strRemarks = txtRemarks.Text;
+            string strProjname;
+            string strMatname;
             string strPrice;
             float fPrice, fTotal = 0;
 
@@ -122,13 +125,13 @@ namespace INTROSE_JGC
                 cmd.Parameters.AddWithValue("@matID", strMaterial);
                 cmd.Connection = con;
                 con.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                sdr.Read();
-                strPrice = sdr.GetValue(0).ToString();
-                fPrice = float.Parse(strPrice);
-                fTotal = fPrice * intQty;
-                sdr.Close();
-               
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    sdr.Read();
+                    strPrice = sdr.GetValue(0).ToString();
+                    fPrice = float.Parse(strPrice);
+                    fTotal = fPrice * intQty;
+                }
                 
             }
 
@@ -140,10 +143,40 @@ namespace INTROSE_JGC
                 cmd3.Parameters.AddWithValue("@qty", intQty);
                 cmd3.Connection = con;
                 cmd3.ExecuteNonQuery();
-                lblStatus.Text = "Successfully added!";
+                
+            SqlCommand cmd5 = new SqlCommand("SELECT PROJECT_NAME FROM CMT_PROJECT_LIST WHERE PROJECT_ID = @projid ");     
+                cmd5.Parameters.AddWithValue("@projid", int.Parse(lstProject.SelectedValue));
+                cmd5.Connection = con;
+                using (SqlDataReader sdr1 = cmd5.ExecuteReader())
+                {
+                    sdr1.Read();
+                    System.Diagnostics.Debug.WriteLine(sdr1.GetString(0));
+                    strProjname = sdr1.GetValue(0).ToString();
+                }
+
+            SqlCommand cmd7 = new SqlCommand("SELECT NAME FROM CMT_MATERIALS_MASTERLIST WHERE MATERIAL_ID = @matid");
+                cmd7.Parameters.AddWithValue("@matid", strMaterial);
+                cmd7.Connection = con;
+                using (SqlDataReader sdr3 = cmd7.ExecuteReader()) 
+                {
+                    sdr3.Read();
+                    strMatname = sdr3.GetValue(0).ToString();
+                }
+
+            SqlCommand cmd4 = new SqlCommand("INSERT INTO TEMP_TABLE VALUES(@projname,@matname,@cat,@qty,@rmk,@price)");
+                cmd4.Parameters.AddWithValue("@projname", strProjname);
+                cmd4.Parameters.AddWithValue("@matname", strMatname);
+                cmd4.Parameters.AddWithValue("@cat", lstCategory.SelectedValue);
+                cmd4.Parameters.AddWithValue("@qty", intQty);
+                cmd4.Parameters.AddWithValue("@rmk", txtRemarks.Text);
+                cmd4.Parameters.AddWithValue("@price", fTotal);
+                cmd4.Connection = con;
+                cmd4.ExecuteNonQuery();
                 con.Close();
-                Response.Redirect("Module1.aspx");
-        
+
+            lblStatus.Text = "Successfully added!";
+            Response.Redirect("Module1.aspx");
+                    
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -154,6 +187,9 @@ namespace INTROSE_JGC
             con.Open();
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
+            SqlCommand cmd3 = new SqlCommand("DELETE TEMP_TABLE");
+            cmd3.Connection = con;
+            cmd3.ExecuteNonQuery();
             lblStatus.Text = "Successfully cleared entries!";
             con.Close();
             Response.Redirect("Module1.aspx");
@@ -163,7 +199,7 @@ namespace INTROSE_JGC
         {
             string constr = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
-            SqlCommand cmd = new SqlCommand("INSERT INTO CMT_PROJECT_DETAILS SELECT * FROM TEMP_TABLE1");
+            SqlCommand cmd = new SqlCommand("INSERT INTO PROJECT_DETAILS SELECT * FROM TEMP_TABLE1");
             con.Open();
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
@@ -171,14 +207,12 @@ namespace INTROSE_JGC
             SqlCommand cmd2 = new SqlCommand("DELETE TEMP_TABLE1");
             cmd2.Connection = con;
             cmd2.ExecuteNonQuery();
+            SqlCommand cmd3 = new SqlCommand("DELETE TEMP_TABLE");
+            cmd3.Connection = con;
+            cmd3.ExecuteNonQuery();
             con.Close();
+            lblStatus.Text = "Successfully submitted form!";
             Response.Redirect("Module1.aspx");
-            
-        }
-
-        protected void tblMATLIST_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
     }

@@ -155,11 +155,11 @@
         padding: 10px;
         display: inline-block;
         position: relative;
-        width:781px;
+        width:901px;
         float: left;
         overflow-y: scroll;
         height: 300px;
-        top: 0px;
+        top: -20px;
         left: 6px;
     }
 
@@ -327,7 +327,8 @@
 
         <asp:DropDownList ID="lstProject" runat="server" OnSelectedIndexChanged="proj_SelectedIndexChanged" DataSourceID="lstProjects" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID"/>
             <asp:SqlDataSource ID="lstProjects" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT [PROJECT_ID], [PROJECT_NAME] FROM [CMT_PROJECT_LIST]"></asp:SqlDataSource>
-        <br>
+        <asp:RequiredFieldValidator ID ="rfvProj" runat="server" ControlToValidate="lstProject" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+            <br>
         </div>
         </div>
         <div class="row">
@@ -336,8 +337,9 @@
         </div>
         <div class="col-50">
         <asp:DropDownList ID="lstCategory" runat="server" OnSelectedIndexChanged="cat_SelectedIndexChanged" DataSourceID="lstCat" DataTextField="CATEGORY" DataValueField="CATEGORY" AutoPostBack="true" />
-            <asp:SqlDataSource ID="lstCat" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT DISTINCT CATEGORY FROM CMT_MATERIALS_MASTERLIST"></asp:SqlDataSource>
-        <br>
+            <asp:SqlDataSource  ID="lstCat" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT DISTINCT CATEGORY FROM CMT_MATERIALS_MASTERLIST"></asp:SqlDataSource>
+        <asp:RequiredFieldValidator ID ="rfv2" runat="server" ControlToValidate="lstCategory" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+ 
         </div>
         </div>
         <div class="row">
@@ -346,6 +348,7 @@
         </div>
         <div class="col-50">
         <asp:DropDownList ID="lstMaterials" runat="server" OnSelectedIndexChanged="mat_SelectedIndexChanged" AutoPostBack="true" />
+            <asp:RequiredFieldValidator ID ="rfv3" runat="server" ControlToValidate="lstMaterials" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
         <br>
         </div>
         </div>
@@ -354,7 +357,8 @@
         Quantity:
         </div>
         <div class="col-50"> 
-        <asp:TextBox ID="txtQuantity" runat="server" type="number"></asp:TextBox><br />
+        <asp:TextBox ID="txtQuantity" runat="server" type="number" ></asp:TextBox>
+            <asp:RequiredFieldValidator ID ="rfv4" runat="server" ControlToValidate="txtQuantity" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         </div>
         <div class="row">
@@ -365,21 +369,21 @@
         <asp:TextBox ID="txtRemarks"  TextMode="MultiLine" runat="server"></asp:TextBox><br>
         </div>
         </div>
-           <asp:Button runat="server" ID="btnClear" Text="Clear" OnClick="btnClear_Click"> </asp:Button>
-           <asp:Button runat="server" ID="btnAdd" Text="Add" OnClick="btnAdd_Click" ></asp:Button>
+           <asp:Button runat="server" ID="btnClear" Text="Clear Entries" OnClick="btnClear_Click"> </asp:Button>
+           <asp:Button runat="server" ID="btnAdd" Text="Add" OnClick="btnAdd_Click" ValidationGroup="grpAdd"></asp:Button>
         <div class="col-50">
-        <asp:SqlDataSource ID="TEMP_TABLE1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT * FROM [TEMP_TABLE1]"></asp:SqlDataSource>
-        <asp:GridView ID= "tblMATLIST" runat="server" AutoGenerateColumns="False" DataSourceID="TEMP_TABLE1" AllowPaging="True">
+        <asp:SqlDataSource ID="TEMP_TABLE1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>"  SelectCommand="SELECT * FROM [TEMP_TABLE1]"></asp:SqlDataSource>
+        <asp:GridView ID= "tblMATLIST" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
-                <asp:BoundField DataField="PROJECT_ID" HeaderText="Project Name" SortExpression="PROJECT_ID" />
-                <asp:BoundField DataField="MATERIAL_ID" HeaderText="Material ID" SortExpression="MATERIAL_ID" />
-                <asp:BoundField DataField ="CATEGORY" HeaderText="Category" SortExpression="CATEGORY" />
+                <asp:BoundField DataField="PROJECT_NAME" HeaderText="Project Name" SortExpression="PROJECT_NAME" />
+                <asp:BoundField DataField="MATERIAL_NAME" HeaderText="Material Name" SortExpression="MATERIAL_NAME" />
+                <asp:BoundField DataField="CATEGORY" HeaderText="Category" SortExpression="CATEGORY"></asp:BoundField>
                 <asp:BoundField DataField="QUANTITY" HeaderText="Quantity" SortExpression="QUANTITY" />
                 <asp:BoundField DataField="REMARKS" HeaderText="Remarks" SortExpression="REMARKS" />
                 <asp:BoundField DataField="PRICE" HeaderText="Total Price" SortExpression="PRICE" />
             </Columns>
         </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>"  SelectCommand="SELECT * FROM [TEMP_TABLE]"></asp:SqlDataSource>
         </div>
         <asp:Button Text="Submit" ID="btnSubmit" OnClick="btnSubmit_Click" runat="server"/>
         <asp:Label runat="server" ID="lblStatus"></asp:Label>
