@@ -176,5 +176,10 @@ namespace INTROSE_JGC
             
         }
 
+        protected void tblMATLIST_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

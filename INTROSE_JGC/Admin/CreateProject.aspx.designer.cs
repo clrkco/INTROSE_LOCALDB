@@ -7,54 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace INTROSE_JGC {
+namespace INTROSE_JGC.Admin {
     
     
-    public partial class Default {
+    public partial class CreateProject {
         
         /// <summary>
-        /// view control.
+        /// tbxProjectName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView view;
+        protected global::System.Web.UI.WebControls.TextBox tbxProjectName;
         
         /// <summary>
-        /// ProjList control.
+        /// tbxDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProjList;
+        protected global::System.Web.UI.WebControls.TextBox tbxDepartment;
         
         /// <summary>
-        /// ActivityLog control.
+        /// tbxLeadEng control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ActivityLog;
+        protected global::System.Web.UI.WebControls.TextBox tbxLeadEng;
         
         /// <summary>
-        /// ActivityLogData control.
+        /// tbxDuration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ActivityLogData;
+        protected global::System.Web.UI.WebControls.TextBox tbxDuration;
         
         /// <summary>
-        /// btnRefresh control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefresh;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
     }
 }

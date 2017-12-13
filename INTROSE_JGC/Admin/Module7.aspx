@@ -299,7 +299,7 @@
             <a href="/UserProfile.aspx" class = "menu">User Profile</a>
            </div>
       <div class = "home2">
-            <asp:LoginStatus runat="server" />
+            
         </div>
     </header>
     <form class="info" runat="server">
@@ -320,6 +320,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <asp:Button runat="server" ID="btnCreateAcc" Text="Create Project" OnClick="btnCreateAcc_Click" />
     <asp:Label runat="server" ID="lblState" ForeColor="Green"></asp:Label>
     </form>
 		    <form class = "info">

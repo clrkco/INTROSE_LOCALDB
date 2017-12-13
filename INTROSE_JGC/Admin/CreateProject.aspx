@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="INTROSE_JGC.Default" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateProject.aspx.cs" Inherits="INTROSE_JGC.Admin.CreateProject" %>
 
 <!DOCTYPE html>
 
@@ -160,8 +159,8 @@
         float: left;
         overflow-y: scroll;
         height: 300px;
-        top: 32px;
-        left: -9px;
+        top: 26px;
+        left: 3px;
     }
 
 
@@ -211,10 +210,9 @@
     border-radius: 5px;
     padding: 20px;
     float: left;
-    width: 1023px;
+    width: 600px;
     font-family: sans-serif;
-        height: 356px;
-    }
+}
 .col-25 {
     width: 150px;
     display: inline-block;
@@ -287,7 +285,7 @@
 </style>
 
 <head runat="server">
-    <title>Home</title>
+    <title>Module 1</title>
     <script runat="server">
     
     </script>
@@ -308,39 +306,52 @@
                     <a href="/Module6.aspx">Engineering Software License Allocation Monitoring System </a>
                 </div>
             </div>
-        <div class="home">
-            <a href ="Admin/Module7.aspx"><font color="White">Admin</font></a>
-        </div>
+        
         <div class = "home3">
             <a href="/UserProfile.aspx" class = "menu">User Profile</a>
         </div>
        
     </header>
     <form class = "info" runat ="server">
-        <asp:GridView runat="server" ID="view" AutoGenerateColumns="False" DataSourceID="ProjList">
-            <Columns>
-                <asp:BoundField DataField="PROJECT_ID" HeaderText="PROJECT_ID" SortExpression="PROJECT_ID" />
-                <asp:BoundField DataField="PROJECT_NAME" HeaderText="PROJECT_NAME" SortExpression="PROJECT_NAME" />
-                <asp:BoundField DataField="DEPARTMENT" HeaderText="DEPARTMENT" SortExpression="DEPARTMENT" />
-                <asp:BoundField DataField="LEAD_ENGINEER" HeaderText="LEAD_ENGINEER" SortExpression="LEAD_ENGINEER" />
-                <asp:BoundField DataField="DURATION_IN_MONTHS" HeaderText="DURATION_IN_MONTHS" SortExpression="DURATION_IN_MONTHS" />
-                <asp:BoundField DataField="TOTAL_PRICE" HeaderText="TOTAL_PRICE" SortExpression="TOTAL_PRICE" />
-            </Columns>
-        </asp:GridView>
-        <asp:SqlDataSource ID="ProjList" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT * FROM [CMT_PROJECT_LIST]"></asp:SqlDataSource>
-       
-         <asp:GridView ID="ActivityLog" runat="server" AutoGenerateColumns="False" DataKeyNames="LOG_ID"  OnSelectedIndexChanged="ActivityLog_SelectedIndexChanged" DataSourceID="ActivityLogData">
-            <Columns>
-                <asp:BoundField DataField="LOG_ID" HeaderText="LOG_ID" ReadOnly="True" SortExpression="LOG_ID" />
-                <asp:BoundField DataField="EMPLOYEE_NAME" HeaderText="EMPLOYEE_NAME" SortExpression="EMPLOYEE_NAME" />
-                <asp:BoundField DataField="PROJECT_NAME" HeaderText="PROJECT_NAME" SortExpression="PROJECT_NAME" />
-                <asp:BoundField DataField="DATETIME" HeaderText="DATETIME" SortExpression="DATETIME" />
-            </Columns>
-        </asp:GridView>
-
-        <asp:SqlDataSource ID="ActivityLogData" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT * FROM [CMV_ActivityLog]"></asp:SqlDataSource>
-        <asp:Button runat="server" ID="btnRefresh" Text="Refresh" OnClick="btnRefresh_Click"    />
-    </form>
+        <div class="row">
+        <div class="col-25">
+        Project Name:
+        </div>
+        <div class="col-75">
+            <asp:TextBox runat="server" ID="tbxProjectName"></asp:TextBox>
+        <br>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-25">
+        Department:
+        </div>
+        <div class="col-75">
+            <asp:TextBox runat="server" ID="tbxDepartment"></asp:TextBox>
+        <br>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-25">
+        Lead Engineer:
+        </div>
+        <div class="col-75">
+            <asp:TextBox runat="server" ID="tbxLeadEng"></asp:TextBox>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-25">
+        Duration in Months:
+        </div>
+        <div class="col-75"> 
+        <asp:TextBox ID="tbxDuration" runat="server" type="number"></asp:TextBox><br />
+        </div>
+        </div>
+        <div class="row">
+        
+        <asp:Button Text="Submit" ID="btnSubmit" OnClick="btnSubmit_Click" runat="server"/>
+        <asp:Label runat="server" ID="lblStatus"></asp:Label>
+        </form>
     
        
     

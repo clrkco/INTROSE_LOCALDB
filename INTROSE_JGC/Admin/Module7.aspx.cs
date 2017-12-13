@@ -82,5 +82,10 @@ namespace INTROSE_JGC
                 }
             }
         }
+
+        protected void btnCreateAcc_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/CreateProject.aspx");
+        }
     }
 }

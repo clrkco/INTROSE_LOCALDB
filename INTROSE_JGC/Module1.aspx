@@ -31,10 +31,10 @@
     
     footer{
         background-color: lightgrey;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        position:fixed;
+        left:0;
+        bottom:0;
+        width:100%;
         padding: 15px;
         text-align: left;
         font-family: sans-serif;
@@ -155,12 +155,12 @@
         padding: 10px;
         display: inline-block;
         position: relative;
-        width:400px;
+        width:781px;
         float: left;
         overflow-y: scroll;
         height: 300px;
-        top: 26px;
-        left: 3px;
+        top: 0px;
+        left: 6px;
     }
 
 
@@ -210,13 +210,16 @@
     border-radius: 5px;
     padding: 20px;
     float: left;
-    width: 600px;
+    width: 1384px;
     font-family: sans-serif;
 }
 .col-25 {
     width: 150px;
     display: inline-block;
     padding: 10px;
+    float: left;
+    padding-left: 100px;
+
 }
 
 /* Floating column for inputs: 75% width */
@@ -225,6 +228,9 @@
   margin-top: 6px;
         padding: 15px;
     display: inline-block;
+     float: left;
+    padding-left: 100px;
+ 
 }
 
 /* Clear floats after the columns */
@@ -306,17 +312,6 @@
                     <a href="/Module6.aspx">Engineering Software License Allocation Monitoring System </a>
                 </div>
             </div>
-            <asp:LoginView ID="LoginView" runat="server">
-                        <RoleGroups>
-                            <asp:RoleGroup Roles="Administrator">
-                                <ContentTemplate>
-                                    <asp:HyperLink runat="server" NavigateUrl="~\Admin\Module7.aspx"></asp:HyperLink>
-                                </ContentTemplate>
-                            </asp:RoleGroup>
-                            <asp:RoleGroup Roles="User">
-                            </asp:RoleGroup>
-                        </RoleGroups>          
-             </asp:LoginView>
         
         <div class = "home3">
             <a href="/UserProfile.aspx" class = "menu">User Profile</a>
@@ -328,7 +323,7 @@
         <div class="col-25">
         Project:
         </div>
-        <div class="col-75">
+        <div class="col-50">
 
         <asp:DropDownList ID="lstProject" runat="server" OnSelectedIndexChanged="proj_SelectedIndexChanged" DataSourceID="lstProjects" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID"/>
             <asp:SqlDataSource ID="lstProjects" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT [PROJECT_ID], [PROJECT_NAME] FROM [CMT_PROJECT_LIST]"></asp:SqlDataSource>
@@ -339,7 +334,7 @@
         <div class="col-25">
         Category:
         </div>
-        <div class="col-75">
+        <div class="col-50">
         <asp:DropDownList ID="lstCategory" runat="server" OnSelectedIndexChanged="cat_SelectedIndexChanged" DataSourceID="lstCat" DataTextField="CATEGORY" DataValueField="CATEGORY" AutoPostBack="true" />
             <asp:SqlDataSource ID="lstCat" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT DISTINCT CATEGORY FROM CMT_MATERIALS_MASTERLIST"></asp:SqlDataSource>
         <br>
@@ -349,7 +344,7 @@
         <div class="col-25">
         Material:
         </div>
-        <div class="col-75">
+        <div class="col-50">
         <asp:DropDownList ID="lstMaterials" runat="server" OnSelectedIndexChanged="mat_SelectedIndexChanged" AutoPostBack="true" />
         <br>
         </div>
@@ -358,7 +353,7 @@
         <div class="col-25">
         Quantity:
         </div>
-        <div class="col-75"> 
+        <div class="col-50"> 
         <asp:TextBox ID="txtQuantity" runat="server" type="number"></asp:TextBox><br />
         </div>
         </div>
@@ -366,24 +361,26 @@
         <div class="col-25">
         Remarks:
         </div>
-        <div class="col-75">
+        <div class="col-50">
         <asp:TextBox ID="txtRemarks"  TextMode="MultiLine" runat="server"></asp:TextBox><br>
         </div>
         </div>
            <asp:Button runat="server" ID="btnClear" Text="Clear" OnClick="btnClear_Click"> </asp:Button>
            <asp:Button runat="server" ID="btnAdd" Text="Add" OnClick="btnAdd_Click" ></asp:Button>
-    
-        <asp:GridView ID= "tblMATLIST" runat="server" AutoGenerateColumns="False" DataSourceID="TEMP_TABLE1">
-            <Columns>
-                <asp:BoundField DataField="PROJECT_ID" HeaderText="PROJECT_ID" SortExpression="PROJECT_ID" />
-                <asp:BoundField DataField="MATERIAL_ID" HeaderText="MATERIAL_ID" SortExpression="MATERIAL_ID" />
-                <asp:BoundField DataField="QUANTITY" HeaderText="QUANTITY" SortExpression="QUANTITY" />
-                <asp:BoundField DataField="REMARKS" HeaderText="REMARKS" SortExpression="REMARKS" />
-                <asp:BoundField DataField="PRICE" HeaderText="PRICE" SortExpression="PRICE" />
-            </Columns>
-
-        </asp:GridView>
+        <div class="col-50">
         <asp:SqlDataSource ID="TEMP_TABLE1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT * FROM [TEMP_TABLE1]"></asp:SqlDataSource>
+        <asp:GridView ID= "tblMATLIST" runat="server" AutoGenerateColumns="False" DataSourceID="TEMP_TABLE1" AllowPaging="True">
+            <Columns>
+                <asp:CommandField ShowSelectButton="True" />
+                <asp:BoundField DataField="PROJECT_ID" HeaderText="Project Name" SortExpression="PROJECT_ID" />
+                <asp:BoundField DataField="MATERIAL_ID" HeaderText="Material ID" SortExpression="MATERIAL_ID" />
+                <asp:BoundField DataField ="CATEGORY" HeaderText="Category" SortExpression="CATEGORY" />
+                <asp:BoundField DataField="QUANTITY" HeaderText="Quantity" SortExpression="QUANTITY" />
+                <asp:BoundField DataField="REMARKS" HeaderText="Remarks" SortExpression="REMARKS" />
+                <asp:BoundField DataField="PRICE" HeaderText="Total Price" SortExpression="PRICE" />
+            </Columns>
+        </asp:GridView>
+        </div>
         <asp:Button Text="Submit" ID="btnSubmit" OnClick="btnSubmit_Click" runat="server"/>
         <asp:Label runat="server" ID="lblStatus"></asp:Label>
         </form>

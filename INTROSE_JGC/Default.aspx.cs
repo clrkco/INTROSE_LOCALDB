@@ -25,7 +25,7 @@ namespace INTROSE_JGC
 
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
-            string strDept;
+           /* string strDept;
             string constr = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
             
@@ -38,17 +38,18 @@ namespace INTROSE_JGC
             strDept = dr.GetString(0);
             dr.Close();
 
-            SqlCommand cmd1 = new SqlCommand("SELECT PROJECT_NAME, LEAD_ENGINEER, DEPARTMENT, DURATION_IN_MONTHS, TOTAL_PRICE FROM CMT_PROJECT_LIST WHERE (DEPARTMENT = @DEPARTMENT)", con);
+            SqlCommand cmd1 = new SqlCommand("SELECT PROJECT_NAME, LEAD_ENGINEER, DEPARTMENT, DURATION_IN_MONTHS, TOTAL_PRICE FROM CMT_PROJECT_LIST WHERE DEPARTMENT = @DEPARTMENT");
             cmd1.Parameters.AddWithValue("@DEPARTMENT", strDept);
             System.Diagnostics.Debug.WriteLine(strDept);
-            //cmd1.Connection = con;
-           // cmd1.CommandType = CommandType.Text;
+            cmd1.Connection = con;
+            cmd1.CommandType = CommandType.Text;
 
             SqlDataAdapter sda = new SqlDataAdapter(cmd1);
-            DataSet dt = new DataSet();
+            DataTable dt = new DataTable();
             sda.Fill(dt);
-            ActivityLog.DataSource = dt;
-            ActivityLog.DataBind();
+            tblMATLIST.DataSource = dt;
+            tblMATLIST.DataBind();*/
+
         }
     }
 }
