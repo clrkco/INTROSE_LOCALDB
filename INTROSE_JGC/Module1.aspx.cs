@@ -197,12 +197,14 @@ namespace INTROSE_JGC
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            string strProjname;
+            string strEmployee;
             string constr = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
-            SqlCommand cmd = new SqlCommand("INSERT INTO PROJECT_DETAILS SELECT * FROM TEMP_TABLE1");
+            SqlCommand cmd4 = new SqlCommand("INSERT INTO PROJECT_DETAILS SELECT * FROM TEMP_TABLE1");
             con.Open();
-            cmd.Connection = con;
-            cmd.ExecuteNonQuery();
+            cmd4.Connection = con;
+            cmd4.ExecuteNonQuery();
             lblStatus.Text = "Successfully submitted!";
             SqlCommand cmd2 = new SqlCommand("DELETE TEMP_TABLE1");
             cmd2.Connection = con;
@@ -210,6 +212,31 @@ namespace INTROSE_JGC
             SqlCommand cmd3 = new SqlCommand("DELETE TEMP_TABLE");
             cmd3.Connection = con;
             cmd3.ExecuteNonQuery();
+
+            SqlCommand cmd7 = new SqlCommand("INSERT INTO CMV_ActivityLog(EMPLOYEE_NAME,PROJECT_NAME,DATETIME) VALUES(@empname,@projname,@datetime)");
+
+            SqlCommand cmd6 = new SqlCommand("SELECT NAME FROM CMT_EMPLOYEES WHERE USERNAME = @user");
+            cmd6.Parameters.AddWithValue("@user", User.Identity.Name);
+            cmd6.Connection = con;
+            using(SqlDataReader sdr = cmd6.ExecuteReader()){
+                sdr.Read();
+                strEmployee = sdr.GetString(0);
+            }
+
+            SqlCommand cmd8 = new SqlCommand("SELECT PROJECT_NAME FROM CMT_PROJECT_LIST WHERE PROJECT_ID = @projid ");
+            cmd8.Parameters.AddWithValue("@projid", int.Parse(lstProject.SelectedValue));
+            cmd8.Connection = con;
+            using (SqlDataReader sdr1 = cmd8.ExecuteReader())
+            {
+                sdr1.Read();
+                System.Diagnostics.Debug.WriteLine(sdr1.GetString(0));
+                strProjname = sdr1.GetValue(0).ToString();
+            }
+            cmd7.Parameters.AddWithValue("@empname", strEmployee);
+            cmd7.Parameters.AddWithValue("@projname", strProjname);
+            cmd7.Parameters.AddWithValue("@datetime", DateTime.Now);
+            cmd7.Connection = con;
+            cmd7.ExecuteNonQuery();
             con.Close();
             lblStatus.Text = "Successfully submitted form!";
             Response.Redirect("Module1.aspx");

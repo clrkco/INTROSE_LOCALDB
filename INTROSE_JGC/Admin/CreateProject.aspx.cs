@@ -24,7 +24,6 @@ namespace INTROSE_JGC.Admin
             string constr = ConfigurationManager.ConnectionStrings["ConnectionString2"].ConnectionString;
             SqlConnection con = new SqlConnection(constr);
             SqlCommand cmd = new SqlCommand("INSERT INTO CMT_PROJECT_LIST(PROJECT_NAME, DEPARTMENT, LEAD_ENGINEER,DURATION_IN_MONTHS) VALUES(@projName,@dept,@leadeng,@duration)");
-            cmd.Parameters.AddWithValue("@projID", 1);
             cmd.Parameters.AddWithValue("@projName", strName);
             cmd.Parameters.AddWithValue("@dept", strDept);
             cmd.Parameters.AddWithValue("@leadeng", strLeadEng);

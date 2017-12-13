@@ -376,8 +376,6 @@
             <asp:BoundField DataField="NUMBEROFMONTHS" HeaderText="NUMBEROFMONTHS" SortExpression="NUMBEROFMONTHS" />
         </Columns>
     </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TEMPTABLE&quot;"></asp:SqlDataSource>--%>
        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"></asp:Button>
     </form>
