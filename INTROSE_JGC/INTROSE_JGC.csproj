@@ -64,6 +64,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Oracle.Web.12.2.1100\lib\net40\Oracle.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.Common">
+      <HintPath>packages\Spire.XLS.7.12.125\lib\net40\Spire.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License">
+      <HintPath>packages\Spire.XLS.7.12.125\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf">
+      <HintPath>packages\Spire.XLS.7.12.125\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS">
+      <HintPath>packages\Spire.XLS.7.12.125\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -315,7 +315,7 @@
                 </div>
             </div>
             <div class = "home">
-                      <a href="/Module7.aspx" class = "menu">Admin/IT</a>             
+                      <a href="/Admin/Module7.aspx" class = "menu">Admin/IT</a>             
              </div>
        
         <div class = "home3">

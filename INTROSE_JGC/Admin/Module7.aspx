@@ -307,9 +307,7 @@
     <asp:Button runat="server" ID="btnCreateAcc" Text="Create Project" OnClick="btnCreateAcc_Click" />
     <asp:Button runat="server" ID="btnUserMgt" Text ="User Management" OnClick="btnUserMgt_Click" />
     <asp:Label runat="server" ID="lblState" ForeColor="Green"></asp:Label>
-    </form>
-		    <form class = "info">
-           <button type="submit">Export Database</button>
+    <asp:Button runat="server" ID="btnExport" Text="Export To Excel" BackColor="Green" OnClick="btnExport_Click" />
     </form>
     <footer>
         <div class ="foot"> &copy; JGC Philippines INC.</div>
