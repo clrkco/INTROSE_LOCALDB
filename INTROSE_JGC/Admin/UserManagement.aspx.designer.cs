@@ -7,28 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace INTROSE_JGC {
+namespace INTROSE_JGC.Admin {
     
     
-    public partial class Module7 {
+    public partial class UserManagement {
         
         /// <summary>
-        /// btnCreateAcc control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateAcc;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// btnUserMgt control.
+        /// gvUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUserMgt;
+        protected global::System.Web.UI.WebControls.GridView gvUsers;
         
         /// <summary>
         /// lblState control.

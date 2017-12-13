@@ -303,24 +303,9 @@
         </div>
     </header>
     <form class="info" runat="server">
-    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="false" OnRowDataBound="OnRowDataBound">
-        <Columns>
-            <asp:BoundField DataField="Username" HeaderText="Username" />
-            <asp:TemplateField HeaderText="Role">
-                <ItemTemplate>
-                    <asp:DropDownList ID="ddlRoles" runat="server">
-                    </asp:DropDownList>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Role">
-                <ItemTemplate>
-                    <asp:Button ID="btnUpdate" Text="Update" runat="server" CommandArgument='<%# Eval("EMPLOYEE_ID") %>'
-                        OnClick="UpdateRole" />
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
+    
     <asp:Button runat="server" ID="btnCreateAcc" Text="Create Project" OnClick="btnCreateAcc_Click" />
+    <asp:Button runat="server" ID="btnUserMgt" Text ="User Management" OnClick="btnUserMgt_Click" />
     <asp:Label runat="server" ID="lblState" ForeColor="Green"></asp:Label>
     </form>
 		    <form class = "info">

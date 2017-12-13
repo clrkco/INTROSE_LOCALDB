@@ -213,7 +213,7 @@ namespace INTROSE_JGC
             cmd3.Connection = con;
             cmd3.ExecuteNonQuery();
 
-            SqlCommand cmd7 = new SqlCommand("INSERT INTO CMV_ActivityLog(EMPLOYEE_NAME,PROJECT_NAME,DATETIME) VALUES(@empname,@projname,@datetime)");
+            SqlCommand cmd7 = new SqlCommand("INSERT INTO CMV_ActivityLog(EMPLOYEE_NAME,PROJECT_NAME,DATETIME,REMARKS) VALUES(@empname,@projname,@datetime,@rmk)");
 
             SqlCommand cmd6 = new SqlCommand("SELECT NAME FROM CMT_EMPLOYEES WHERE USERNAME = @user");
             cmd6.Parameters.AddWithValue("@user", User.Identity.Name);
@@ -235,6 +235,7 @@ namespace INTROSE_JGC
             cmd7.Parameters.AddWithValue("@empname", strEmployee);
             cmd7.Parameters.AddWithValue("@projname", strProjname);
             cmd7.Parameters.AddWithValue("@datetime", DateTime.Now);
+            cmd7.Parameters.AddWithValue("@rmk", "Submitted new form for project: " + strProjname);
             cmd7.Connection = con;
             cmd7.ExecuteNonQuery();
             con.Close();

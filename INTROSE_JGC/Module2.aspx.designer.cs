@@ -31,6 +31,24 @@ namespace INTROSE_JGC {
         protected global::System.Web.UI.WebControls.DropDownList lstProject2;
         
         /// <summary>
+        /// ProjectConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ProjectConnect;
+        
+        /// <summary>
+        /// rfvProj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProj;
+        
+        /// <summary>
         /// lstSoftware control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,33 @@ namespace INTROSE_JGC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList lstSoftware;
+        
+        /// <summary>
+        /// SoftwareConnect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SoftwareConnect;
+        
+        /// <summary>
+        /// txtOthers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOthers;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// dtStart control.
@@ -49,6 +94,15 @@ namespace INTROSE_JGC {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtStart;
         
         /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
         /// txtNumofMons control.
         /// </summary>
         /// <remarks>
@@ -58,6 +112,15 @@ namespace INTROSE_JGC {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtNumofMons;
         
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
         /// btnCancel control.
         /// </summary>
         /// <remarks>
@@ -65,6 +128,15 @@ namespace INTROSE_JGC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// lblConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConfirm;
         
         /// <summary>
         /// btnAdd control.
@@ -85,6 +157,15 @@ namespace INTROSE_JGC {
         protected global::System.Web.UI.WebControls.GridView tblView;
         
         /// <summary>
+        /// Module2View control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Module2View;
+        
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>
@@ -92,5 +173,14 @@ namespace INTROSE_JGC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
     }
 }

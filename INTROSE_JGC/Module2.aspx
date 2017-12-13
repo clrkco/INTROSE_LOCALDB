@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script type="text/javascript">
 	    function CheckSoft(val) {
-	        var element = document.getElementById('soft');
+	        var element = document.getElementById(lstSoftware).addEventListener("click", fucntionToExecuteName, false);
 	        if (val == 'others')
 	            element.style.display = 'block';
 	        else
@@ -332,19 +332,21 @@
         Project:
         </div>
         <div class="col-75">
-            <asp:DropDownList runat="server" ID="lstProject2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" OnSelectedIndexChanged="lstProject2_SelectedIndexChanged" ></asp:DropDownList>
-            <br>
+            <asp:DropDownList runat="server" ID="lstProject2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" OnSelectedIndexChanged="lstProject2_SelectedIndexChanged" DataSourceID="ProjectConnect" ></asp:DropDownList>
+            <asp:SqlDataSource ID="ProjectConnect" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT [PROJECT_NAME], [PROJECT_ID] FROM [CMT_PROJECT_LIST]"></asp:SqlDataSource>
+             <asp:RequiredFieldValidator ID ="rfvProj" runat="server" ControlToValidate="lstProject2" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         </div>
         <div class="row">
         <div class="col-25">
 		Software:
         </div>
-        <div class="col-75">
-        <asp:DropDownList runat="server" ID="lstSoftware" DataTextField="SOFTWARE" DataValueField="SOFTWARE" OnSelectedIndexChanged="lstSoftware_SelectedIndexChanged" ></asp:DropDownList>
-            <br>
+        
+        <asp:DropDownList runat="server" ID="lstSoftware" DataTextField="SOFTWARE" DataValueField="SOFTWARE" OnSelectedIndexChanged="lstSoftware_SelectedIndexChanged" DataSourceID="SoftwareConnect" onclick="CheckSoft(this.value)"></asp:DropDownList>
+            <asp:SqlDataSource ID="SoftwareConnect" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT DISTINCT [SOFTWARE] FROM [CMT_MONTHLY_SOFTWARE]"></asp:SqlDataSource>
+        <asp:TextBox runat="server" ID="txtOthers" Visible="false"></asp:TextBox>
+             <asp:RequiredFieldValidator ID ="RequiredFieldValidator1" runat="server" ControlToValidate="lstSoftware" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
 		<input type="text" name="soft" id="soft" style='display:none;'/>
-        </div>
         </div>
         <div class="row">
         <div class="col-25">
@@ -352,6 +354,7 @@
         </div>
         <div class="col-75">
         <input runat="server" type="datetime-local" name="startdate" id="dtStart"/><br>
+             <asp:RequiredFieldValidator ID ="RequiredFieldValidator2" runat="server" ControlToValidate="dtStart" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         </div>
         <div class="row">
@@ -360,24 +363,28 @@
         </div>
         <div class="col-75">
         <input runat="server" type="number" id="txtNumofMons"/><br>
+             <asp:RequiredFieldValidator ID ="RequiredFieldValidator3" runat="server" ControlToValidate="txtNumofMons" ValidationGroup="grpAdd" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         </div>
         <%-- ADD others option --%>
-           <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" ></asp:Button>
-           <asp:Button runat="server" ID="btnAdd" Text="Add" OnClick="btnAdd_Click"></asp:Button>
+           <asp:Button runat="server" ID="btnCancel" Text="Clear Entries" OnClick="btnCancel_Click" ></asp:Button>
+           <asp:Label runat="server" ID="lblConfirm"></asp:Label>
+           <asp:Button runat="server" ID="btnAdd" Text="Add" OnClick="btnAdd_Click" ValidationGroup="grpAdd"></asp:Button>
     
     <div class = "tabletitle">Software List</div>
 
-    <asp:GridView ID="tblView" runat="server" AutoGenerateColumns="False" DataKeyNames="SOFTWARE" DataSourceID="SqlDataSource2">
+    <asp:GridView ID="tblView" runat="server" AutoGenerateColumns="False" DataSourceID="Module2View">
         <Columns>
-            <asp:BoundField DataField="SOFTWARE" HeaderText="SOFTWARE" ReadOnly="True" SortExpression="SOFTWARE" />
-            <asp:BoundField DataField="PROJECT" HeaderText="PROJECT" SortExpression="PROJECT" />
-            <asp:BoundField DataField="STARTDATE" HeaderText="STARTDATE" SortExpression="STARTDATE" />
-            <asp:BoundField DataField="NUMBEROFMONTHS" HeaderText="NUMBEROFMONTHS" SortExpression="NUMBEROFMONTHS" />
+            <asp:BoundField DataField="PROJECT_NAME" HeaderText="Project Name" SortExpression="PROJECT_NAME" />
+            <asp:BoundField DataField="START_DATE" HeaderText="Start Date" SortExpression="START_DATE" />
+            <asp:BoundField DataField="NUMBER_OF_MONTHS" HeaderText="Number of Months" SortExpression="NUMBER_OF_MONTHS" />
+            <asp:BoundField DataField="SOFTWARE" HeaderText="Software Title" SortExpression="SOFTWARE" />
         </Columns>
     </asp:GridView>
-       <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TEMPTABLE&quot;"></asp:SqlDataSource>--%>
+        <asp:SqlDataSource ID="Module2View" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" SelectCommand="SELECT * FROM [TEMP_TABLE2_VIEW]"></asp:SqlDataSource>
+       
        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"></asp:Button>
+        <asp:Label ID="lblStatus" runat="server"></asp:Label>
     </form>
     <footer>
         <div class ="foot"> &copy; JGC Philippines INC.</div>
